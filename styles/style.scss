@@ -110,6 +110,18 @@ body {
     }
 }
 
+.swal2-modal {
+    backdrop-filter: blur(6px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(6px) saturate(200%) !important;
+    background-color: rgba(17, 25, 40, 0.9) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.125) !important;
+   }
+   
+   .swal2-confirm {
+    background-color: #0091ff !important;
+    }
+
 @media screen and (max-width: 500px) {
     #wrapper {
         min-height: 100vh;
@@ -121,6 +133,10 @@ body {
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            min-height: 100vh;
+            #auth-content {
+                width: 100%;
+            }
         }
     }
 }
