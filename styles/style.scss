@@ -16,9 +16,13 @@ img {
     max-width: 100%;
 }
 
+::placeholder {
+    color: #adadad;
+}
+
 body {
     min-height: 100vh;
-    background: url("../img/wallpaper.jpg");
+    background: url("../img/wallpaper2.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -120,7 +124,15 @@ body {
    
    .swal2-confirm {
     background-color: #0091ff !important;
-    }
+}
+
+.wrapper-item {
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}
 
 @media screen and (max-width: 500px) {
     #wrapper {
