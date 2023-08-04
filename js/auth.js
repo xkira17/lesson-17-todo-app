@@ -13,17 +13,8 @@ const registerPassword = document.querySelector("#register-password")
 const loginPhone = document.querySelector("#login-phone")
 const loginPassword = document.querySelector("#login-password")
 
-changeToLoginBtn.addEventListener('click', () => {
-    loginForm.classList.remove('active')
-    registerForm.classList.add('active')
-    authSubTitle.innerHTML = 'Register'
-})
-
-changeToRegisterBtn.addEventListener('click', () => {
-    registerForm.classList.remove('active')
-    loginForm.classList.add('active')
-    authSubTitle.innerHTML = 'Sign in'
-})
+const auth = document.querySelector('#auth')
+const app = document.querySelector('#app')
 
 function register(e) {
     e.preventDefault()
@@ -55,7 +46,6 @@ function register(e) {
     .catch(err => console.log(err))
 }
 
-
 function login(e) {
     e.preventDefault()
     
@@ -77,12 +67,44 @@ function login(e) {
             Swal.fire('Good job!', 'вы успешно вошли в свой аккаунт', 'success')
             localStorage.setItem('todo-token', data.payload.token)
             localStorage.setItem('todo-username', data.payload.name)
+            changeContentType('app')
         } else {
             Swal.fire('Wrong!', data.message, 'error')
         }
     })
     .catch(err => console.log(err))
 }
+
+function changeContentType(type) {
+    switch (type) {
+        case 'auth':
+            auth.classList.add('active')
+            app.classList.remove('active')
+            break
+        case 'app':
+            app.classList.add('active')
+            auth.classList.remove('active')
+            break
+    }
+}
+
+if (localStorage.getItem('todo-token')) {
+    changeContentType('app')
+} else {
+    changeContentType('auth')
+}
+
+changeToLoginBtn.addEventListener('click', () => {
+    loginForm.classList.remove('active')
+    registerForm.classList.add('active')
+    authSubTitle.innerHTML = 'Register'
+})
+
+changeToRegisterBtn.addEventListener('click', () => {
+    registerForm.classList.remove('active')
+    loginForm.classList.add('active')
+    authSubTitle.innerHTML = 'Sign in'
+})
 
 loginForm.addEventListener('submit', login)
 registerForm.addEventListener('submit', register)

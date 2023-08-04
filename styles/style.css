@@ -135,6 +135,18 @@ body {
   display: block;
 }
 
+.task-item {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: medium;
+  font-size: 20px;
+}
+
 @media screen and (max-width: 500px) {
   #wrapper {
     min-height: 100vh;
@@ -142,11 +154,10 @@ body {
     border-radius: 0;
   }
   #wrapper #auth {
-    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-height: 100vh;
+    margin: 50% 0;
   }
   #wrapper #auth #auth-content {
     width: 100%;
